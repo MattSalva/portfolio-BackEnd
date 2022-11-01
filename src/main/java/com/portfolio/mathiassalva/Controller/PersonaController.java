@@ -3,6 +3,7 @@ package com.portfolio.mathiassalva.Controller;
 import com.portfolio.mathiassalva.Entity.Persona;
 import com.portfolio.mathiassalva.Interface.IPersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 public class PersonaController {
     @Autowired
     private IPersonaService iPersonaService;
+
 
     @GetMapping("/personas/show")
     @ResponseBody
@@ -24,18 +26,20 @@ public class PersonaController {
         return iPersonaService.findPersona((long)1);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/personas/create")
     public String createPersona(@RequestBody Persona persona){
         iPersonaService.savePersona(persona);
         return "La persona fue creada con exito";
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/personas/delete/{id}")
     public String deletePersona(@PathVariable Long id) {
         iPersonaService.deletePersona(id);
         return "La persona fue borrada con exito";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/personas/editar/{id}")
     public Persona editarPersona(@PathVariable Long id,
                                 @RequestParam("nombre") String nuevoNombre,
