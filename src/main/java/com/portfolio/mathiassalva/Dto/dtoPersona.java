@@ -1,48 +1,26 @@
-package com.portfolio.mathiassalva.Entity;
+package com.portfolio.mathiassalva.Dto;
 
+import javax.validation.constraints.NotBlank;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+public class dtoPersona {
 
-@Entity
-public class Persona {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @NotNull
-    @Size(min = 1, max = 100, message = "Longitud de Nombre Invalida")
+    @NotBlank
     private String nombre;
-
-    @NotNull
-    @Size(min = 1, max = 100, message = "Longitud de Apellido Invalida")
+    @NotBlank
     private String apellido;
-
-    @NotNull
+    @NotBlank
     private String descripcion;
-
+    @NotBlank
     private String img;
 
-    public Persona() {
+    public dtoPersona() {
     }
 
-    public Persona(String nombre, String apellido, String descripcion, String img) {
+    public dtoPersona(String nombre, String apellido, String descripcion, String img) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.descripcion = descripcion;
         this.img = img;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNombre() {
