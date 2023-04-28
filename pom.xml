@@ -5,11 +5,13 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
+
 		<version>2.7.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.portfolio</groupId>
 	<artifactId>mathiassalva</artifactId>
+	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>mathiassalva</name>
 	<description>mathiassalva</description>
@@ -89,5 +91,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>
